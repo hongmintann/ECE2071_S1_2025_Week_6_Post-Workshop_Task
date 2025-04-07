@@ -97,7 +97,7 @@ void filter_ascending(struct node *startPtr, int count_nodes)
     struct node* curPtr = NULL;
 	prevPtr = startPtr;
 	curPtr = startPtr->nextPtr;
-    for (int i = 0; i < count_nodes; i++)
+	for (int i = 0; i < count_nodes; i++)
     {
         while (curPtr != NULL)
         {
@@ -105,9 +105,13 @@ void filter_ascending(struct node *startPtr, int count_nodes)
             {
                 prevPtr->nextPtr = curPtr->nextPtr;
                 free(curPtr);
+				curPtr = prevPtr -> nextPtr;
 			}
-            prevPtr = prevPtr->nextPtr; 
-            curPtr = prevPtr->nextPtr;
-        }
+            else
+			{
+				prevPtr = prevPtr -> nextPtr;
+				curPtr = curPtr -> nextPtr;
+			}
+		}
     }
 }
